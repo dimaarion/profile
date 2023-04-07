@@ -1,23 +1,17 @@
+import { useEffect, useState } from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './profile.css';
+import axios from 'axios';
 
 function App() {
+  const[profie, setProfile]=useState([{}]);
+  useEffect(()=>{
+    axios.get("https://sandaniprim.md/cache/profile").then((response)=>setProfile(response.data))
+  },[setProfile])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="profile it-text-3xl font-bold underline">
+     {profie.map((prof,i)=><div key={prof.brandName + i}><input defaultValue={prof.brandName} /></div>)}
+     
     </div>
   );
 }
