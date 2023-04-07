@@ -9,8 +9,11 @@ function App() {
     axios.get("https://sandaniprim.md/cache/profile").then((response)=>setProfile(response.data))
   },[setProfile])
   return (
-    <div className="profile it-text-3xl font-bold underline">
-     {profie.map((prof,i)=><div key={prof.brandName + i}><input defaultValue={prof.brandName} /></div>)}
+    <div className="container profile">
+     {profie.map((prof,i)=><div key={prof.brandName + i}>
+     <div><label htmlFor='nameProfile' >Название профиля</label></div> 
+     <div><input className='h-8 border-2 border-blue-300' defaultValue={prof.brandName} /></div> 
+      </div>)}
      
     </div>
   );
